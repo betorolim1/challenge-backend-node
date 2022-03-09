@@ -545,3 +545,5 @@ DesignTimeBuild/
 
 .vs/challenge-backend-node/config/
 .vs/challenge-backend-node/v16/TestStore/
+
+/challenge-backend-node/Logs
