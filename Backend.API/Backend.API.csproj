@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Backend.Data\Backend.Data.csproj" />
     <ProjectReference Include="..\Backend.Handler\Backend.Handler.csproj" />
+    <ProjectReference Include="..\Backend.Shared\Backend.Shared.csproj" />
   </ItemGroup>
 
 </Project>

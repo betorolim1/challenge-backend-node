@@ -1,12 +1,10 @@
+using Backend.API;
+using Backend.API.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Backend
 {
@@ -22,6 +20,11 @@ namespace Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
+            services.AddApplicationContainer();
+
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,12 +43,9 @@ namespace Backend
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors("CorsPolicy");
 
-            app.UseCors(options =>
-            {
-                options.WithMethods("GET", "POST", "PUT", "DELETE");
-            });
+            app.UseMiddleware<ExceptionMiddleware>(env);
 
             app.UseEndpoints(endpoints =>
             {
