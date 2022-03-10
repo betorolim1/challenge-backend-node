@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Newtonsoft.Json;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Backend.API.Middlewares
@@ -29,7 +31,10 @@ namespace Backend.API.Middlewares
                 if (_webHostEnvironment.EnvironmentName == "Development")
                     throw;
 
-                Log.LogError(exception: ex, method: context.Request.Method, url: context.Request.GetEncodedUrl());
+                var guidError = Guid.NewGuid().ToString("N");
+                Log.LogError(exception: ex, method: context.Request.Method, url: context.Request.GetEncodedUrl(), guidError);
+                context.Response.StatusCode = HttpStatusCode.InternalServerError.GetHashCode();
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(new { id = $"Error code: {guidError}" }));
             }
         }
     }

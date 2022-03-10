@@ -7,10 +7,11 @@ namespace Backend.Shared.Logger
 {
     public static class Log
     {
-        public static void LogError(Exception exception, string method, string url)
+        public static void LogError(Exception exception, string method, string url, string guidError)
         {
             var obj = new Error
             {
+                Id = guidError,
                 ServerName = Environment.MachineName,
                 Exception = exception,
                 RequestMethod = method,

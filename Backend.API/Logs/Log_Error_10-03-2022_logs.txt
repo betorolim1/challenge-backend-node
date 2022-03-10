@@ -1,0 +1,26 @@
+
+
+[ID]                  : 98658bad7a624499866f0ed4a6ab5333
+[Date]                : 10/03/2022 14:18:04
+[Request URL]         : http://localhost:65380/api/v1/movies/title/fast?plot=1
+[Request Method]      : GET
+[Server Name]         : ABELHA2646
+[Exception]           : 
+Plot is not valid
+[StackTrace]          : 
+   at Backend.Data.Services.OMDb.OMDbService.getPlot(Int32 plot) in C:\Estudo\challenge-backend-node\Backend.Data\Services\OMDb\OMDbService.cs:line 87
+   at Backend.Data.Services.OMDb.OMDbService.RequestMoviesAsync(String title, Int32 plot, Nullable`1 year) in C:\Estudo\challenge-backend-node\Backend.Data\Services\OMDb\OMDbService.cs:line 51
+   at Backend.Handler.Handlers.MoviesHandler.GetMoviesByTitleAsync(GetMoviesByTitleCommand command) in C:\Estudo\challenge-backend-node\Backend.Handler\Handlers\MoviesHandler.cs:line 34
+   at Backend.Controllers.Movies.MoviesController.GetMoviesByTitleAsync(String title, Nullable`1 year, Int32 plot) in C:\Estudo\challenge-backend-node\Backend.API\Controllers\Movies\MoviesController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Backend.API.Middlewares.ExceptionMiddleware.Invoke(HttpContext context) in C:\Estudo\challenge-backend-node\Backend.API\Middlewares\ExceptionMiddleware.cs:line 27
+                

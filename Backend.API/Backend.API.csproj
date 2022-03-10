@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Backend.Data\Backend.Data.csproj" />
     <ProjectReference Include="..\Backend.Handler\Backend.Handler.csproj" />
     <ProjectReference Include="..\Backend.Shared\Backend.Shared.csproj" />

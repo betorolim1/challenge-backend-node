@@ -4,6 +4,7 @@ namespace Backend.Shared.Logger.ErrorObject
 {
     public class Error
     {
+        public string Id { get; set; }
         public string ServerName { get; set; }
         public string RequestUrl { get; set; }
         public string RequestMethod { get; set; }
@@ -13,6 +14,7 @@ namespace Backend.Shared.Logger.ErrorObject
         {
             return $@"
 
+[ID]                  : {Id}
 [Date]                : {DateTime.Now}
 [Request URL]         : {RequestUrl}
 [Request Method]      : {RequestMethod}
