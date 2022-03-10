@@ -25,6 +25,10 @@ namespace Backend.Handler.Services.OMDb.Response
         public string ImdbID { get; set; }
         public string Type { get; set; }
         public string TotalSeasons { get; set; }
+        public string DVD { get; set; }
+        public string BoxOffice { get; set; }
+        public string Production { get; set; }
+        public string Website { get; set; }
         public string Response { get; set; }
         public string Error { get; set; }
     }
