@@ -33,7 +33,7 @@ namespace Backend.Data.Services.OMDb
 
             var request = new OMDbMoviesRequest
             {
-                p = getPlot(plot),
+                plot = getPlot(plot),
                 t = title,
                 y = year.HasValue ? year.ToString() : string.Empty,
                 Apikey = API_KEY
