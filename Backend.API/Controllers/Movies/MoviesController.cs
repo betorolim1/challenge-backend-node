@@ -32,5 +32,22 @@ namespace Backend.Controllers.Movies
 
             return Ok(result);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMoviesByIdAsync([FromRoute] string id, [FromQuery] int plot = 0)
+        {
+            var command = new GetMoviesByIdCommand
+            {
+                Id = id,
+                Plot = plot
+            };
+
+            var result = await _moviesHandler.GetMoviesByIdAsync(command);
+
+            if (!_moviesHandler.Valid)
+                return BadRequest(_moviesHandler.Notifications);
+
+            return Ok(result);
+        }
     }
 }

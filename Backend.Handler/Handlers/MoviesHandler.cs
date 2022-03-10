@@ -1,5 +1,6 @@
 ﻿using Backend.Handler.Handlers.Interfaces;
 using Backend.Handler.Movies.Commands;
+using Backend.Handler.Movies.Commands.Base;
 using Backend.Handler.Movies.Result;
 using Backend.Handler.Services.OMDb;
 using Backend.Handler.Services.OMDb.Response;
@@ -25,17 +26,39 @@ namespace Backend.Handler.Handlers
             if (string.IsNullOrEmpty(command.Title))
                 AddNotification("Title must be filled");
 
-            if (!Enum.IsDefined(typeof(PlotEnum), command.Plot))
-                AddNotification("Plot is not valid");
+            validatePlot(command);
 
             if (!Valid)
                 return null;
 
-            var response = await _IOMDbService.RequestMoviesAsync(command.Title, command.Year, command.Plot);
+            var response = await _IOMDbService.RequestMoviesAsync(command.Title, command.Plot, command.Year);
 
             var result = getMovieResult(response);
 
             return result;
+        }
+
+        public async Task<MovieResult> GetMoviesByIdAsync(GetMoviesByIdCommand command)
+        {
+            if (string.IsNullOrEmpty(command.Id))
+                AddNotification("Id must be filled");
+
+            validatePlot(command);
+
+            if (!Valid)
+                return null;
+
+            var response = await _IOMDbService.RequestMoviesAsync(command.Id, command.Plot);
+
+            var result = getMovieResult(response);
+
+            return result;
+        }
+
+        private void validatePlot(MoviesCommandBase command)
+        {
+            if (!Enum.IsDefined(typeof(PlotEnum), command.Plot))
+                AddNotification("Plot is not valid");
         }
 
         private MovieResult getMovieResult(OMDbResponse response)

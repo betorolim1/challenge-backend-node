@@ -5,6 +5,7 @@ namespace Backend.Handler.Services.OMDb
 {
     public interface IOMDbService
     {
-        Task<OMDbResponse> RequestMoviesAsync(string title, int? year, int plot);
+        public Task<OMDbResponse> RequestMoviesAsync(string title, int plot, int? year);
+        public Task<OMDbResponse> RequestMoviesAsync(string id, int plot);
     }
 }

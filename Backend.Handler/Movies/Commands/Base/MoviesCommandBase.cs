@@ -2,7 +2,6 @@
 {
     public class MoviesCommandBase
     {
-        public int? Year { get; set; }
         public int Plot { get; set; }
     }
 }

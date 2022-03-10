@@ -26,7 +26,24 @@ namespace Backend.Data.Services.OMDb
             api = RestService.For<OMDbApi>(ROUTE);
         }
 
-        public async Task<OMDbResponse> RequestMoviesAsync(string title, int? year, int plot)
+        public async Task<OMDbResponse> RequestMoviesAsync(string id, int plot)
+        {
+            if (string.IsNullOrEmpty(id))
+                throw new Exception("Id must be filled");
+
+            var request = new OMDbMoviesRequest
+            {
+                plot = getPlot(plot),
+                i = id,
+                Apikey = API_KEY
+            };
+
+            var response = await requestMoviesAsync(request);
+
+            return response;
+        }
+
+        public async Task<OMDbResponse> RequestMoviesAsync(string title, int plot, int? year)
         {
             if (string.IsNullOrEmpty(title))
                 throw new Exception("Title must be filled");
@@ -39,6 +56,13 @@ namespace Backend.Data.Services.OMDb
                 Apikey = API_KEY
             };
 
+            var response = await requestMoviesAsync(request);
+
+            return response;
+        }
+
+        private async Task<OMDbResponse> requestMoviesAsync(OMDbMoviesRequest request)
+        {
             var response = await api.TaskOMDbAsync(request);
 
             if (!response.IsSuccessStatusCode)

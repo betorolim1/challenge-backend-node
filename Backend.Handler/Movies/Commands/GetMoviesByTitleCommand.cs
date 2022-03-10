@@ -5,5 +5,6 @@ namespace Backend.Handler.Movies.Commands
     public class GetMoviesByTitleCommand : MoviesCommandBase
     {
         public string Title { get; set; }
+        public int? Year { get; set; }
     }
 }
