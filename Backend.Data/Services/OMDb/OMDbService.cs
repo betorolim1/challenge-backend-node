@@ -26,7 +26,7 @@ namespace Backend.Data.Services.OMDb
             api = RestService.For<OMDbApi>(ROUTE);
         }
 
-        public async Task<OMDbResponse> RequestMoviesAsync(string title, int? year, byte plot)
+        public async Task<OMDbResponse> RequestMoviesAsync(string title, int? year, int plot)
         {
             if (string.IsNullOrEmpty(title))
                 throw new Exception("Title must be filled");
@@ -55,9 +55,9 @@ namespace Backend.Data.Services.OMDb
             return response.Content;
         }
 
-        private string getPlot(byte plot)
+        private string getPlot(int plot)
         {
-            if (plot == (byte)PlotEnum.Full)
+            if (plot == (int)PlotEnum.Full)
                 return "full";
 
             return string.Empty;

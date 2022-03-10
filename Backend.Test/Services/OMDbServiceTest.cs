@@ -10,7 +10,7 @@ namespace Backend.Test.Services
         [Fact]
         public async Task Deve_retornar_excecao_caso_title_nao_seja_preenchido()
         {
-            var service = NewOMDbService();
+            var service = newOMDbService();
 
             var exception = await Record.ExceptionAsync(() => service.RequestMoviesAsync(null, 2022, 1));
 
@@ -19,6 +19,6 @@ namespace Backend.Test.Services
             Assert.Equal("Title must be filled", exception.Message);
         }
 
-        private OMDbService NewOMDbService() => new OMDbService();
+        private OMDbService newOMDbService() => new OMDbService();
     }
 }
