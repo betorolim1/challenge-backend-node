@@ -5,7 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backend.Handler\Backend.Handler.csproj" />
+    <ProjectReference Include="..\Backend.Shared\Backend.Shared.csproj" />
   </ItemGroup>
 
 </Project>

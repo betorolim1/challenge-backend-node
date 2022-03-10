@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Backend.Data.Services.OMDb;
+using Backend.Handler.Services.OMDb;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Backend.API
 {
@@ -10,7 +8,12 @@ namespace Backend.API
     {
         public static void AddApplicationContainer(this IServiceCollection service)
         {
+            AddServices(service);
+        }
 
+        private static void AddServices(IServiceCollection service)
+        {
+            service.AddTransient<IOMDbService, OMDbService>();
         }
     }
 }
