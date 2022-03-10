@@ -1,0 +1,27 @@
+#!/bin/sh
+
+printf "\e[1;33mpre-push:\e[0m: Build\n"
+cmd.exe /c "dotnet build"
+
+if [ $? -eq 0 ]
+then
+    printf "\e[1;32mSuccessful:\e[0m Build\n"
+else
+    printf "\e[1;31mError:\e[0m Build\n"
+    exit 1
+fi
+
+printf "\n"
+printf "=============================================================="
+printf "\n"
+
+printf "\e[1;33mpre-push:\e[0m: Run Tests\n"
+cmd.exe /c "dotnet test .\Backend.Test\Backend.Test.csproj"
+
+if [ $? -eq 0 ]
+then
+    printf "\e[1;32mSuccessful:\e[0m Build\n"
+else
+    printf "\e[1;31mError:\e[0m Build\n"
+    exit 1
+fi
