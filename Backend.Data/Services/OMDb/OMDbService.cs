@@ -81,10 +81,12 @@ namespace Backend.Data.Services.OMDb
 
         private string getPlot(int plot)
         {
-            if (plot == (int)PlotEnum.Full)
-                return "full";
+            var plotName = Enum.GetName(typeof(PlotEnum), plot);
 
-            return string.Empty;
+            if (plotName is null)
+                throw new Exception("Plot is not valid");
+
+            return plotName;
         }
     }
 }
